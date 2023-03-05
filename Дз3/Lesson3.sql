@@ -11,6 +11,7 @@ CREATE TABLE IF NOT EXISTS `staff`
     `salary` INT,
     `age` INT
 );
+TRUNCATE staff;
 INSERT INTO staff (firstname, lastname, post, seniority, salary, age)
 VALUES
 	('Вася', 'Петров', 'Начальник', 40, 100000, 60),
@@ -44,4 +45,10 @@ LIMIT 5;
 /*
 	3. Посчитайте суммарную зарплату (salary) по каждой специальности (роst).
 */
-SELECT * FROM staff
+SELECT post, SUM(salary) FROM staff
+GROUP BY post;
+/*
+	4. Найдите кол-во сотрудников с специальностью (post) «Рабочий» в возрасте от 25 до 49 лет включительно.
+*/
+SELECT post, COUNT(lastname) AS "Количество сот-ов" FROM staff
+WHERE age BETWEEN 25 AND 49 AND post = 'Рабочий'
