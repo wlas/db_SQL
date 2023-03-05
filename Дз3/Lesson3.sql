@@ -51,11 +51,17 @@ GROUP BY post;
 	4. Найдите кол-во сотрудников с специальностью (post) «Рабочий» в возрасте от 25 до 49 лет включительно.
 */
 SELECT post, COUNT(lastname) AS "Количество сот-ов" FROM staff
-WHERE age BETWEEN 25 AND 49 AND post = 'Рабочий';
+WHERE (age BETWEEN 25 AND 49) AND post = 'Рабочий';
 
 /*
 	5. Найдите количество специальностей.
 */
 SELECT post, COUNT(post) AS "Кол-во специальностей"
 FROM staff
+GROUP BY post;
+/*
+	6. Выведите специальности, у которых средний возраст сотрудников меньше 30 лет.
+*/
+SELECT post, AVG(age) FROM staff
 GROUP BY post
+HAVING AVG(age) < 30
