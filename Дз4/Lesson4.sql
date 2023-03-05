@@ -115,9 +115,25 @@ VALUES
 	('2020-02-12 07:35:38', 1);
 
 /*
-	1. Вывести всех котиков по магазинам по id (условие соединения shops.id = cats.shops_id)
+	1. Вывести всех котиков по магазинам по id (условие соединения shops.id = cats.shops_id).
 */
 SELECT c.name, c.shops_id, s.shopname
 FROM cats c
 JOIN shops s
+ON s.id = c.shops_id;
+
+/*
+	2. Вывести магазин, в котором продается кот “Мурзик” (попробуйте выполнить 2 способами).
+*/
+
+SELECT c.name, c.shops_id, s.shopname  -- 1 способ
+FROM cats c
+JOIN shops s
+ON s.id = c.shops_id
+WHERE
+c.name = "Murzik";
+
+SELECT c.`name`, c.shops_id, s.shopname  -- 2 способ
+FROM shops s
+JOIN (SELECT shops_id, `name` FROM cats WHERE name = "Murzik" ) AS c
 ON s.id = c.shops_id
