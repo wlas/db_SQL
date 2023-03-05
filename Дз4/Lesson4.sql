@@ -145,3 +145,12 @@ SELECT c.name, s.shopname
 FROM shops s
 JOIN cats c
 ON s.id = c.shops_id AND c.name NOT IN ("Murzik","Zuza");
+
+/*
+	4. Вывести название и цену для всех анализов, которые продавались 5 февраля 2020 и всю следующую неделю.
+*/
+SELECT a.an_name, a.an_price, o.ord_datetime
+FROM analysis a
+JOIN orders o 
+ON o.ord_an = a.an_id
+WHERE ord_datetime BETWEEN '2020-02-05 07:05:14' AND '2020-02-12 07:35:38';
