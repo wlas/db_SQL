@@ -136,4 +136,12 @@ c.name = "Murzik";
 SELECT c.`name`, c.shops_id, s.shopname  -- 2 способ
 FROM shops s
 JOIN (SELECT shops_id, `name` FROM cats WHERE name = "Murzik" ) AS c
-ON s.id = c.shops_id
+ON s.id = c.shops_id;
+
+/*
+	3. Вывести магазины, в котором НЕ продаются коты “Мурзик” и “Zuza”
+*/
+SELECT c.name, s.shopname 
+FROM shops s
+JOIN cats c
+ON s.id = c.shops_id AND c.name NOT IN ("Murzik","Zuza");
