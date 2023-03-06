@@ -36,4 +36,11 @@ SELECT * FROM cars
 WHERE cost < 30000;
 
 SELECT * FROM price_min;
+/*
+	3. 	Создайте представление, в котором будут только автомобили марки “Шкода” и “Ауди”.
+*/
+CREATE VIEW only_car AS
+SELECT * FROM cars
+WHERE `name` IN ("Skoda","Audi");
 
+SELECT * FROM only_car;
